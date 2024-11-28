@@ -11,7 +11,7 @@ struct ContentView: View {
     @State private var text: String = ""
     @State private var ButtonText: String = "Copy to clipboard"
     private let clipboard = UIPasteboard.general
-    @State private var textPasted = UserDefaults.standard.string(forKey: "clip")
+    @State private var clipboardHistory: [String] = UserDefaults.standard.stringArray(forKey: "clipHistory") ?? []
     
     var body: some View {
         VStack {
@@ -33,26 +33,38 @@ struct ContentView: View {
                 }.tint(.orange)
             }
             
-            Text(textPasted ?? "")
+            List {
+                ForEach(clipboardHistory, id: \.self) { item in
+                    Text(item)
+                }
+                .onDelete(perform: deleteItems)
+            }
         }
         .padding()
     }
     
     func paste() {
         if let string = clipboard.string {
-            textPasted = string
-            UserDefaults.standard.set(string, forKey: "clip")
+            clipboardHistory.insert(string, at: 0)
+            UserDefaults.standard.set(clipboardHistory, forKey: "clipHistory")
         }
     }
     
     func copyToClipboard() {
         clipboard.string = self.text
+        clipboardHistory.insert(text, at: 0)
+        UserDefaults.standard.set(clipboardHistory, forKey: "clipHistory")
         self.text = ""
         self.ButtonText = "Copied!"
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.ButtonText = "Copy to Clipboard"
         }
+    }
+    
+    func deleteItems(at offsets: IndexSet) {
+        clipboardHistory.remove(atOffsets: offsets)
+        UserDefaults.standard.set(clipboardHistory, forKey: "clipHistory")
     }
 }
 
