@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXFileReference section */
@@ -11,11 +11,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		7EFD7F962CF8AECD002C3D3F /* Clipboard */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Clipboard;
-			sourceTree = "<group>";
-		};
+		7EFD7F962CF8AECD002C3D3F /* Clipboard */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Clipboard; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +82,7 @@
 				};
 			};
 			buildConfigurationList = 7EFD7F8F2CF8AECD002C3D3F /* Build configuration list for PBXProject "Clipboard" */;
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -94,7 +91,6 @@
 			);
 			mainGroup = 7EFD7F8B2CF8AECD002C3D3F;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
 			productRefGroup = 7EFD7F952CF8AECD002C3D3F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

@@ -22,7 +22,7 @@ struct ContentView: View {
     }
     
     var body: some View {
-        VStack {
+        Form {
             TextField("Add some text", text: $text)
             
             HStack {
@@ -85,7 +85,6 @@ struct ContentView: View {
                 }
             }
         }
-        .padding()
         .alert("Add New Category", isPresented: $showingAddCategory) {
             TextField("Category name", text: $newCategory)
             Button("Cancel", role: .cancel) { }
@@ -96,6 +95,9 @@ struct ContentView: View {
                     newCategory = ""
                 }
             }
+        }
+        .onAppear {
+            paste()
         }
     }
     
